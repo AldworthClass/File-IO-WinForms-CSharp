@@ -38,6 +38,7 @@
             this.btnSort = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ofdMovie = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,6 +58,7 @@
             this.btnOpen.TabIndex = 1;
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.BtnOpen_Click);
             // 
             // txtAddWords
             // 
@@ -101,6 +103,7 @@
             this.btnSort.TabIndex = 6;
             this.btnSort.Text = "Sort";
             this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.BtnSort_Click);
             // 
             // btnRemove
             // 
@@ -110,7 +113,7 @@
             this.btnRemove.TabIndex = 7;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnQuit_Click);
+            this.btnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // pictureBox1
             // 
@@ -121,6 +124,10 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
+            // 
+            // ofdMovie
+            // 
+            this.ofdMovie.FileName = "openFileDialog1";
             // 
             // FormReadWrite
             // 
@@ -155,6 +162,7 @@
         private System.Windows.Forms.Button btnSort;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.OpenFileDialog ofdMovie;
     }
 }
 
