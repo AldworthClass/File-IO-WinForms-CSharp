@@ -55,18 +55,35 @@ namespace File_IO_WinForms_CSharp
 
         private void BtnOpen_Click(object sender, EventArgs e)
         {
-            
-            if (ofdMovie.ShowDialog() == DialogResult.OK)
+            ofdMovie.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";    //Will filter text files by default
+            ofdMovie.RestoreDirectory = true;   //Will open to previousley selected directory
+            ofdMovie.FileName = "movies";       //the filename displayed by default in the Dialog Box
+            if (ofdMovie.ShowDialog() == DialogResult.OK)   //Only
             {
+                movies.Clear();
                 foreach (string movie in File.ReadLines(ofdMovie.FileName, Encoding.UTF8))
                 {
                     movies.Add(movie);
                 }
-
                 lstMovies.DataSource = null;
                 lstMovies.DataSource = movies;
-
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            ofdMovie.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            ofdMovie.RestoreDirectory = true;
+            ofdMovie.FileName = "movies";
+            ofdMovie.DefaultExt = ".txt";
+            if (ofdMovie.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter writer = new StreamWriter(sfdMovie.FileName);
+                foreach (string movie in movies)
+                    writer.WriteLine(movie);
+                writer.Close();
+            }
+
         }
     }
 }

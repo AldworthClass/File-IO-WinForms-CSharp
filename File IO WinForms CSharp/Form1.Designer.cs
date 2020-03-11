@@ -39,6 +39,7 @@
             this.btnRemove = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ofdMovie = new System.Windows.Forms.OpenFileDialog();
+            this.sfdMovie = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,6 +95,7 @@
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnSort
             // 
@@ -163,6 +165,7 @@
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.OpenFileDialog ofdMovie;
+        private System.Windows.Forms.SaveFileDialog sfdMovie;
     }
 }
 
