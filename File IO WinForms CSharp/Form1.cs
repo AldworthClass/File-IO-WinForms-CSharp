@@ -18,25 +18,20 @@ namespace File_IO_WinForms_CSharp
         {
             InitializeComponent();
         }
-
-      
-     
-
+         
         private void btnAddWord_Click(object sender, EventArgs e)
         {
             if (movies.Contains(txtAddWords.Text.Trim()))
                 MessageBox.Show("Movie already in list");
             else if (txtAddWords.Text.Trim().Length == 0)
                 MessageBox.Show("Please enter a movie name");
-            else
+            else   //Only adds a movie if it is not already in the list
             {
                 movies.Add(txtAddWords.Text.Trim());
                 txtAddWords.Text = "";
                 lstMovies.DataSource = null;
                 lstMovies.DataSource = movies;
             }
-                
-
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
@@ -63,27 +58,26 @@ namespace File_IO_WinForms_CSharp
                 movies.Clear();
                 foreach (string movie in File.ReadLines(ofdMovie.FileName, Encoding.UTF8))
                 {
-                    movies.Add(movie);
+                    movies.Add(movie);  //Adds each line from the file to the list
                 }
-                lstMovies.DataSource = null;
+                lstMovies.DataSource = null;    //re-populates the listbox based on the new contents of movies
                 lstMovies.DataSource = movies;
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            ofdMovie.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            ofdMovie.RestoreDirectory = true;
-            ofdMovie.FileName = "movies";
-            ofdMovie.DefaultExt = ".txt";
-            if (ofdMovie.ShowDialog() == DialogResult.OK)
+            sfdMovie.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";    //Filter
+            sfdMovie.RestoreDirectory = true;                                   //Will use previous directory
+            sfdMovie.FileName = "movies";                                       
+            sfdMovie.DefaultExt = ".txt";                                       //File will be saved with this extension
+            if (sfdMovie.ShowDialog() == DialogResult.OK)
             {
                 StreamWriter writer = new StreamWriter(sfdMovie.FileName);
-                foreach (string movie in movies)
-                    writer.WriteLine(movie);
-                writer.Close();
+                foreach (string movie in movies)    //Iterates thorugh movies
+                    writer.WriteLine(movie);        //Writes each movie to the file
+                writer.Close();                     //Closes writer so that file will be saved
             }
-
         }
     }
 }
